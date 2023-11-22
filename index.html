@@ -40,18 +40,91 @@
 		<h1 class="masthead">Time of Day</h1>
 	</header>
     <main>
-	 <header><h3>A JavaScript Project by YOUR NAME HERE</h3></header>
-	    <p>Explain what your page does and how it works here!</p>
-	  <img src="http://dummyimage.com/300x400" alt="Time of Day Image" class="flexible">
+	 <header><h3>A JavaScript Project by Jester Molina</h3></header>
+	 <h3 id="my-greeting">Good Morning</h3>
+	    <p>I created a web page that uses JavaScript to determine the current hour, and presents a different image, custom message, and color based on the time of the day. For example, in the evening from 6pm to 11pm, the web page will greet the user with "Good Evening!", and the background color will change to a solid olive color and display the evening.jpg image. </p>
+	  <img src="http://dummyimage.com/300x400" alt="Time of Day Image" class="flexible" id="my-pic">
      <footer>
       <p><small>&copy; 2022 by 
-          YOUR NAME HERE, All Rights Reserved ~ 
+          Jester Molina, All Rights Reserved ~ 
           <a id="html-checker" href="#" target="_blank">Check HTML</a> ~ 
           <a id="css-checker" href="#" target="_blank">Check CSS</a></small>
      </p>
     </footer>
   </main>
  <script>
+
+	/*
+
+		Deliverable: Create a web page that uses JavaScript to determine the current hour, and presents a different image, custom message, and color based on each of the following times of day:
+
+		Morning (5am to 12 noon)
+		Afternoon (12 noon to 6pm)
+		Evening (6pm to 11pm)
+		Night (11pm to 5am)
+
+		Criteria: The three items above (color, image, message) must be unique for each of the 4 time periods of the day.
+
+	*/
+
+
+
+
+
+	let myDate = new Date();
+	let myHour = myDate.getHours();
+	let myGreeting = "";
+	let myColor = "";
+	let myPic = "";
+
+	//PUT IN PLACE FOR TESTING - REMOVE LINE BELOW!!
+
+	//myHour = 19;
+
+	if(myHour > 5 && myHour < 12){//morning
+		myGreeting = "Good Morning!";
+		myColor = "crimson";
+		myPic = "morning.jpg";	
+	} else	if(myHour >= 12 && myHour < 18){
+		myGreeting = "Good Afternoon!";
+		myColor = "purple";
+		myPic = "afternoon.jpg";
+	} else	if(myHour >= 18 && myHour < 23){
+		myGreeting = "Good Evening!";
+		myColor = "olive";
+		myPic = "evening.jpg";
+	}else{//night
+		myGreeting = "Good Night!";
+		myColor = "navy";
+		myPic = "night.jpg";
+	}
+
+	//pre-pend the images path
+	myPic = "images/" + myPic;
+
+	//custom message
+	document.getElementById("my-greeting").innerHTML = myGreeting;
+
+	//custom color
+	document.querySelector("html").style.backgroundColor = myColor;
+
+	//custom pic
+	document.getElementById("my-pic").src = myPic;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     document.getElementById("html-checker").setAttribute("href","https://validator.w3.org/nu/?doc=" + location.href);
     document.getElementById("css-checker").setAttribute("href","https://jigsaw.w3.org/css-validator/validator?uri=" + location.href);  
  </script>
